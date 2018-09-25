@@ -1,4 +1,4 @@
-
+import java.util.NoSuchElementException;
 
 /**
  * Write a description of class LinkedList here.
@@ -8,33 +8,55 @@
  */
 public class LinkedList
 {
-    /** description of instance variable x (add comment for each instance variable) */
-    private int x;
-
-    /**
-     * Default constructor for objects of class LinkedList
-     */
-    public LinkedList()
+    private Node first;
+    class Node
     {
-        // initialise instance variables
-        x = 0;
+        //OLD school
+        //any object in and out of LL
+        //cast to object as we remove
+        public Object data;
+        public Node next;
     }
-
+    public LinkedList(){
+        first= null;
+    }
     /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
+     * Adds an element in the front of the linked list
+     * @param element- the element to add
      */
-    public int sampleMethod(int y)
+    public void addFirst(Object element)
     {
-        // put your code here
-        return x+y;
+        Node newNode = new Node();
+       newNode.data= element;
+       newNode.next= first;
+       first= newNode;
+    
     }
-
+   /**
+     * returns the first element of the LL
+     * @return the first element of the LL
+     */
+    public Object getFirst()
+    {
+        if(first==null){throw new NoSuchElementException();}
+        else
+        {return first.data;
+        }
+        
+    }
+    
+    /**
+     * remove the first element of the LL
+     * @return the first element of the LL
+     */
+    public Object removeFirst()
+    {if(first==null){throw new NoSuchElementException();}
+        else
+        {Object data=first.data;
+         first=first.next;
+         return data;
+        }
+        
+    }
+    
 }
