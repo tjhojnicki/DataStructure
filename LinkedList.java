@@ -59,4 +59,69 @@ public class LinkedList
         
     }
     
+    public ListIterator listIterator()
+    {
+        return new LinkedListIterator();
+    }
+    
+    
+    
+    
+    
+    class LinkedListIterator implements ListIterator
+    {
+        private Node position;
+        private Node previous;//remove
+        private boolean isAfterNext;
+        
+        public LinkedListIterator()
+        {
+            position= null;
+            previous=null;
+            isAfterNext= false;
+            
+        }
+        
+        public Object next()
+        {
+            if(!hasNext()){throw new NoSuchElementException();}
+            
+            previous = position; // so I can remove item
+            isAfterNext= true;
+            
+            if(position == null)
+            {
+                position= first; //addresse/ref to Objects
+                
+            }
+            else
+            {
+                position= position.next;
+                
+            }
+            return position.data;
+        }
+        
+        /**
+        * tests if there is an element after the iterator position
+        * @return true if there is an element in the next iterator position
+        */
+        public boolean hasNext()
+        {if(position== null)
+            {
+                return first !=null;
+            }
+         else
+            {
+                return position.next!= null;
+            }
+            
+        }
+        
+        
+        
+        
+        
+    }
+    
 }

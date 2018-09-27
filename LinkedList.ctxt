@@ -10,4 +10,6 @@ comment2.text=\r\n\ returns\ the\ first\ element\ of\ the\ LL\r\n\ @return\ the\
 comment3.params=
 comment3.target=java.lang.Object\ removeFirst()
 comment3.text=\r\n\ remove\ the\ first\ element\ of\ the\ LL\r\n\ @return\ the\ first\ element\ of\ the\ LL\r\n
-numComments=4
+comment4.params=
+comment4.target=ListIterator\ listIterator()
+numComments=5

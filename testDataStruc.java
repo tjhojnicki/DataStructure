@@ -14,9 +14,16 @@ public class testDataStruc
         LinkedList test = new LinkedList();
         
         String word = "Hi";
+        String word2;
         
         test.addFirst(word);
         test.addFirst(new String("I cool"));
+        
+        //word= test.getFirst();//This returns an object
+        //OLD School!!
+        word2= (String)test.getFirst();
+        
+        System.out.print(word2);
     
     }
 
