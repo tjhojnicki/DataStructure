@@ -1,4 +1,5 @@
 import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * Write a description of class LinkedList here.
@@ -9,6 +10,7 @@ import java.util.NoSuchElementException;
 public class LinkedList
 {
     private Node first;
+    private int size;
     class Node
     {
         //OLD school
@@ -19,6 +21,7 @@ public class LinkedList
     }
     public LinkedList(){
         first= null;
+        size=0;
     }
     /**
      * Adds an element in the front of the linked list
@@ -30,6 +33,7 @@ public class LinkedList
        newNode.data= element;
        newNode.next= first;
        first= newNode;
+       size++;
     
     }
    /**
@@ -54,8 +58,10 @@ public class LinkedList
         else
         {Object data=first.data;
          first=first.next;
+         size--;
          return data;
         }
+     
         
     }
     
@@ -69,7 +75,7 @@ public class LinkedList
     
     
     class LinkedListIterator implements ListIterator
-    {
+{
         private Node position;
         private Node previous;//remove
         private boolean isAfterNext;
@@ -138,6 +144,7 @@ public class LinkedList
                 position= newNode;
             }
             isAfterNext=false;
+            size++;
         }
          /**
       * removes the last transeversed element. may only be 
@@ -146,20 +153,72 @@ public class LinkedList
       */
     
     
-      public void remove()
+    public void remove()
       {
+        
         if(isAfterNext==false){ throw new IllegalStateException();}
         if(position==first)
           {removeFirst();}
         else
-        {previous.next=postion.next;
+        {previous.next=position.next;
          
         }
         isAfterNext=false;
         //moves the previous one to where the removed element was previously
-         postion=previous;
-         
+         position=previous;
+         size--;
         }
+        
+    public int sizeBAD(){
+        if(first == null){throw new NoSuchElementException();}
+        Node temp = first;
+        int count =1;
+        while(temp.next != null){
+            count++;
+            temp = temp.next;
+        }
+        return count; 
+       }
+    public void reverse(){
+        Stack <Node> hold = new Stack<>();
+        Node temp = first;
+        while(temp.next != null){
+            hold.push(temp);
+            temp = temp.next;
+        
+        }
+        first  = hold.pop();
+        temp = first;
+        while(hold.size() !=0){
+            temp.next = hold.pop();
+        }    
+     }
+     /*
+    public void reverseTheRealWay(){
+        LinkedList<Object> holder = new LinkedList<>();
+        Node temp = first; 
+        while(first.next != null){
+            holder.addFirst(removeFirst());
+        }
+        holder.addFirst(getFirst());
+        first.data = holder.getFirst();
+        temp = first;
+        while(holder.getFirst() != null){
+            temp.next.data = holder.removeFirst();
+        
+        }
+    }
+    */
+    /**
+     * Adds object to front
+     * @param data the element to add
+     */
+    public void addFirstBADDD(Object data){
+        Node newNode = new Node();
+         first = newNode;
+        newNode.data = data;
+        newNode.next = first;
+      }
       }
     
         
@@ -169,4 +228,4 @@ public class LinkedList
         
     }
     
-}
+
