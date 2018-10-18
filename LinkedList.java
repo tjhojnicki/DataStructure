@@ -48,6 +48,64 @@ public class LinkedList
         }
         
     }
+   /*
+    * adds a new node and where the node at n links used to be and then push it to after the new node
+    * @param- n- amount of links to be traversed, newElement- that data for the new node
+    */
+   public void set(int n, Object newElement)
+   {
+       Node temp= getNode(n);
+       Node prev= getNode(n-1);
+       Node add= new Node();
+       prev.next= add;
+       add.data=newElement;
+       add.next=temp;
+    }
+    
+    /*
+     * returns the data of the node for the amount of links traversed
+     * @param - the amount of links to be traversed
+     * @return- the data of the node of n amount of links
+     */
+    public Object get(int n)
+    {
+        return getNode(n).data;
+    }
+    /*
+     * gets the Node object of n amount of links
+     * @param- the amount of linkes to be traversed
+     * @return- the Node object at n traversed links
+     */
+    private Node getNode(int n)
+    {
+        int count=0;
+        Node temp= first;
+        while (count!=n)
+        {
+            count++;
+            temp= temp.next;
+        }
+        return temp;
+    }
+   /*
+    * checks to see if the linked list has the obj 
+    * @param object that you will see if it is in the list
+    * @return- boolean on if it is in there or not
+    */
+    public boolean contains(Object obj)
+    {if(first==null){throw new NoSuchElementException();}
+    else
+    { Node temp=first;
+      while(temp.next!=null)
+      {
+         if(temp.data.equals(obj))
+         {
+             return true;
+            }
+        }
+      return false;
+    }
+   }
     
     /**
      * remove the first element of the LL

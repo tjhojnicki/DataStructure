@@ -8,20 +8,12 @@ public class LinkedListWork
 {
    public static void main(String[] args)
    {
-
+      LinkedList words = new LinkedList(); 
        words.addLast("Aggressive");
        words.addLast("Brown");
        words.addLast("Cool");
-       words.addLast("Dusty");
-       words.addFirst("Sane");
-       words.addFirst("Purple");
-       words.addFirst("Few");
-       words.addFirst("Dull");
-       words.addLast("Salty");
-       words.addLast("Modern");
-       words.addFirst("Whispering");
-       words.addFirst("Tart");
-      
+        System.out.println(words.contains("Aggressi"));
+        System.out.println(words.get(1));
       // Print all elements
 
       System.out.println(words);
